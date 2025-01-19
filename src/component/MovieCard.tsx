@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Heart from "../assets/Search.svg";
+// import Heart from "../assets/Search.svg";
 import thumbnail from "../assets/thumbnail-small.jpg";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
   genre: string[];
   onClick: () => void;
 }
-const MovieCard: React.FC<Props> = ({ id, title, duration, onClick }) => {
+const MovieCard: React.FC<Props> = ({ id, title, duration }) => {
   // const [favourite, setFavourite]= useState<number[]>([])
 
   return (
