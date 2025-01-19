@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "title": "The Misfits",
+    "description": "A group of eccentric criminals plan to rob a casino in the desert, but their scheme is complicated by a romantic entanglement.",
+    "duration": "2:10:00",
+    "genre": ["Adventure", "Romance"]
+  },
+  {
+    "id": 2,
+    "title": "Journey to the Unknown",
+    "description": "A young woman embarks on a dangerous expedition through an uncharted forest, where she uncovers secrets that challenge her destiny.",
+    "duration": "1:50:00",
+    "genre": ["Adventure", "Fantasy"]
+  },
+  {
+    "id": 3,
+    "title": "Love Under the Stars",
+    "description": "Two star-crossed lovers must navigate the challenges of their worlds colliding, with a cosmic journey at the heart of their romance.",
+    "duration": "2:05:00",
+    "genre": ["Romance", "Science Fiction"]
+  },
+  {
+    "id": 4,
+    "title": "The Silent Night",
+    "description": "A couple finds themselves trapped in a remote cabin on Christmas Eve, where strange and eerie occurrences force them to confront their fears.",
+    "duration": "1:40:00",
+    "genre": ["Horror", "Thriller"]
+  },
+  {
+    "id": 5,
+    "title": "The Last Horizon",
+    "description": "In a post-apocalyptic world, a lone survivor embarks on a journey across a desolate landscape in search of hope and human connection.",
+    "duration": "2:15:00",
+    "genre": ["Adventure", "Drama"]
+  },
+  {
+    "id": 6,
+    "title": "A Forbidden Love",
+    "description": "A love story unfolds between two people from opposing sides of a civil war, as they struggle to maintain their relationship in a time of chaos.",
+    "duration": "1:55:00",
+    "genre": ["Romance", "War"]
+  },
+  {
+    "id": 7,
+    "title": "Wings of Freedom",
+    "description": "Set in a fantastical world, a group of rebels fights to overthrow a tyrannical ruler, discovering unexpected bonds and love along the way.",
+    "duration": "2:25:00",
+    "genre": ["Adventure", "Fantasy"]
+  },
+  {
+    "id": 8,
+    "title": "The Lost Kingdom",
+    "description": "A young adventurer stumbles upon an ancient, forgotten kingdom that holds the key to his past and the fate of the future.",
+    "duration": "2:00:00",
+    "genre": ["Adventure", "Action"]
+  },
+  {
+    "id": 9,
+    "title": "A Song for Tomorrow",
+    "description": "A musician struggling with his career finds unexpected inspiration when he meets a woman whose life story mirrors his own journey.",
+    "duration": "1:45:00",
+    "genre": ["Romance", "Drama"]
+  },
+  {
+    "id": 10,
+    "title": "Echoes of the Past",
+    "description": "A young historian unravels the mystery behind an ancient artifact that holds the key to a long-forgotten romance and lost love.",
+    "duration": "2:05:00",
+    "genre": ["Romance", "Adventure"]
+  },
+  {
+    "id": 11,
+    "title": "The Shadow of Truth",
+    "description": "In a city where secrets run deep, a determined detective uncovers a plot that threatens not just his life, but the future of everyone around him.",
+    "duration": "1:55:00",
+    "genre": ["Thriller", "Mystery"]
+  },
+  {
+    "id": 12,
+    "title": "Across the Ocean",
+    "description": "A love story that spans continents, as two people from different cultures and backgrounds come together to overcome challenges of distance and time.",
+    "duration": "2:00:00",
+    "genre": ["Romance", "Drama"]
+  },
+  {
+    "id": 13,
+    "title": "The Edge of Tomorrow",
+    "description": "A soldier stuck in a time loop must work with a skilled fighter to stop an alien invasion, all while grappling with a growing bond between them.",
+    "duration": "2:10:00",
+    "genre": ["Adventure", "Sci-Fi"]
+  },
+  {
+    "id": 14,
+    "title": "Fate's Promise",
+    "description": "Two strangers, seemingly connected by fate, find their lives intertwined as they pursue their dreams and discover the power of love and destiny.",
+    "duration": "1:50:00",
+    "genre": ["Romance", "Fantasy"]
+  },
+  {
+    "id": 15,
+    "title": "Chasing the Sun",
+    "description": "A group of friends goes on a road trip across the country, facing challenges, uncovering mysteries, and experiencing love along the way.",
+    "duration": "2:05:00",
+    "genre": ["Adventure", "Romance"]
+  },
+  {
+    "id": 16,
+    "title": "The Final Escape",
+    "description": "A former convict is forced to team up with an unlikely ally in order to escape a prison island, only to realize that the greatest danger lies within.",
+    "duration": "2:20:00",
+    "genre": ["Action", "Thriller"]
+  }
+]
