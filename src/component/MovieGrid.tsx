@@ -18,6 +18,7 @@ const MovieGrid: React.FC<MovieGridProps> = ({ movies }) => {
 
   const handleClick = (id: number) => {
     setLiked([...liked, id]);
+    localStorage.setItem("liked",JSON.stringify(liked))
   };
   
   return (
