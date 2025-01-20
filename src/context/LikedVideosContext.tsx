@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 import { Movies, LikedMovieContextType } from "../@types.context";
 
 export const LikedMovieContext = createContext<LikedMovieContextType | null>(
@@ -23,6 +23,14 @@ const LikedMovieProvider: React.FC<{ children: ReactNode }> = ({
       {children}
     </LikedMovieContext.Provider>
   );
+};
+
+export const useLikedMovies = () => {
+  const context = useContext(LikedMovieContext);
+  if (!context) {
+    throw new Error("useLikedMovies must be used within a LikedVideosProvider");
+  }
+  return context;
 };
 
 export default LikedMovieProvider;

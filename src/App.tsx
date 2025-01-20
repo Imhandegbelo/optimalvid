@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import Detail from "./pages/Detail";
 import TopNav from "./component/TopNav";
 import LikedMovieProvider from "./context/LikedVideosContext.tsx";
+import LikedVideos from "./pages/LikedVideos.tsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/movie/:id" element={<Detail />} />
+              <Route path="/liked" element={<LikedVideos />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </main>
