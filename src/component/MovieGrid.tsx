@@ -6,23 +6,21 @@ import Pagination from "./Pagination";
 interface MovieGridProps {
   movies: Movies[];
   likes: Movies[];
+  currentPage: number;
+  totalPage: number;
+  setCurrentPage: any;
 }
 
-const MovieGrid: React.FC<MovieGridProps> = ({ movies, likes }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const videosPerPage = 10;
-
-  // Pagination
-  const startIndex = (currentPage - 1) * videosPerPage;
-  const endIndex = startIndex + videosPerPage;
-  const paginatedMovies = movies.slice(startIndex, endIndex);
-  const totalPage = Math.ceil(movies.length / videosPerPage);
-
+const MovieGrid: React.FC<MovieGridProps> = ({
+  movies,
+  currentPage,
+  setCurrentPage,
+  totalPage,
+  likes,
+}) => {
   function checkIsLiked(movie: Movies, likes: Movies[]): boolean {
     return likes.some((m) => m.id === movie.id);
   }
-
-
 
   return (
     <>

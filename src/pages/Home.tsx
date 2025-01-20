@@ -12,21 +12,33 @@ const Home: React.FC = () => {
   ) as LikedMovieContextType;
 
   const [query, setQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const videosPerPage = 10;
 
+  // Pagination
+  const startIndex = (currentPage - 1) * videosPerPage;
+  const endIndex = startIndex + videosPerPage;
+  // const paginatedMovies: Movies[] = movies.slice(startIndex, endIndex);
+  
+  const paginatedMovies = (movieList:Movies[]) =>movieList.slice(startIndex, endIndex);
+  
   const filteredMovies = (movies: Movies[], query: string) => {
     if (!query || query === "") return movies;
 
+    
     return movies.filter((movie) => {
       const lowerCaseQuery = query.toLowerCase();
       const titleMatch = movie.title.toLowerCase().includes(lowerCaseQuery);
-
+      
       const genreMatch = movie.genre.some((g) =>
         g.toLowerCase().includes(lowerCaseQuery)
-      );
+    );
+    
+    return titleMatch || genreMatch;
+  });
+};
 
-      return titleMatch || genreMatch;
-    });
-  };
+const totalPage = Math.ceil(paginatedMovies(filteredMovies(movies,query)).length / videosPerPage);
 
   return (
     <div className="px- md:px-12 lg:px-16">
@@ -61,7 +73,13 @@ const Home: React.FC = () => {
           </a>
         </div>
         {/* {movies.} */}
-        <MovieGrid movies={filteredMovies(movies, query)} likes={likedMovies} />
+        <MovieGrid
+          movies={paginatedMovies(filteredMovies(movies, query))}
+          currentPage={currentPage}
+          totalPage={totalPage}
+          likes={likedMovies}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </div>
   );
