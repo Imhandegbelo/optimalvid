@@ -40,19 +40,16 @@ const MovieCard: React.FC<Props> = ({ movie, isLiked }) => {
             Title: {movie.title}
           </h2>
           <p className="text-sm text-gray-600">Duration: {movie.duration}</p>
-        </div>
-
-        <div className="flex wrap items-center text-stone-500">
-          {/* {genres.map((genre, index) => (
-            <div
-              key={index}
-              className="sm:ml-3 flex gap-3 text-xs text-gray-400 lg:text-base font-semibold"
-            >
-              {movie.genre.map((g)=>(
+          <div className="flex gap-4 wrap items-center text-stone-500">
+            {movie.genre.map((g) => (
+              <div
+                key={g}
+                className="sm:ml-3 flex gap-3 text-sm text-red-400 lg:text-base font-semibold"
+              >
                 <small>{g}</small>
-              ))}
-            </div>
-          ))} */}
+              </div>
+            ))}
+          </div>
         </div>
       </Link>
     </div>

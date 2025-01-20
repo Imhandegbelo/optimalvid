@@ -1,13 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import right_arrow from "../assets/ArrowRight.svg";
 import movies from "../data/movies.json";
 import MovieGrid from "../component/MovieGrid";
 import hero from "../assets/thumbnail.jpg";
 import { LikedMovieContext } from "../context/LikedVideosContext";
-import { LikedMovieContextType } from "../@types.context";
+import { LikedMovieContextType, Movies } from "../@types.context";
 
 const Home: React.FC = () => {
-  const {likedMovies} =useContext(LikedMovieContext) as LikedMovieContextType
+  const { likedMovies } = useContext(
+    LikedMovieContext
+  ) as LikedMovieContextType;
+
+  const [query, setQuery] = useState("");
+
+  const filteredMovies = (movies: Movies[], query: string) => {
+    if (!query || query === "") return movies;
+
+    return movies.filter((movie) => {
+      const lowerCaseQuery = query.toLowerCase();
+      const titleMatch = movie.title.toLowerCase().includes(lowerCaseQuery);
+
+      const genreMatch = movie.genre.some((g) =>
+        g.toLowerCase().includes(lowerCaseQuery)
+      );
+
+      return titleMatch || genreMatch;
+    });
+  };
 
   return (
     <div className="px- md:px-12 lg:px-16">
@@ -15,8 +34,14 @@ const Home: React.FC = () => {
         className="relative h-[400px] mt-6"
         style={{ backgroundImage: `url(${hero})` }}
       >
-        <div className="absolute flex items-center justify-center text-white text-2xl md:text-5xl bg-center bg-cover inset-0 bg-black/70">
-          OptimalVid
+        <div className="absolute flex items-center justify-center bg-center bg-cover inset-0 bg-black/70">
+          <input
+            type="text"
+            placeholder="Search by title of tag"
+            className="py-1 px-3 rounded border-inset"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
         </div>
       </div>
       <div className="py-10">
@@ -36,7 +61,7 @@ const Home: React.FC = () => {
           </a>
         </div>
         {/* {movies.} */}
-        <MovieGrid movies={movies} likes={likedMovies} />
+        <MovieGrid movies={filteredMovies(movies, query)} likes={likedMovies} />
       </div>
     </div>
   );
