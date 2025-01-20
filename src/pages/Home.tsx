@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import right_arrow from "../assets/ArrowRight.svg";
 import movies from "../data/movies.json";
 import MovieGrid from "../component/MovieGrid";
 import hero from "../assets/thumbnail.jpg";
+import { LikedMovieContext } from "../context/LikedVideosContext";
+import { LikedMovieContextType } from "../@types.context";
 
 const Home: React.FC = () => {
+  const {likedMovies} =useContext(LikedMovieContext) as LikedMovieContextType
+
   return (
     <div className="px- md:px-12 lg:px-16">
       <div
@@ -32,7 +36,7 @@ const Home: React.FC = () => {
           </a>
         </div>
         {/* {movies.} */}
-        <MovieGrid movies={movies} />
+        <MovieGrid movies={movies} likes={likedMovies} />
       </div>
     </div>
   );

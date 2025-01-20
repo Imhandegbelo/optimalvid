@@ -1,85 +1,61 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-// import Heart from "../assets/Search.svg";
 import thumbnail from "../assets/thumbnail-small.jpg";
-import { getItems } from "../utils/localStorage.tsx";
+import { LikedMovieContext } from "../context/LikedVideosContext";
+import { LikedMovieContextType, Movies } from "../@types.context";
 
 interface Props {
-  id: number;
-  title: string;
-  description: string;
-  duration: string;
-  genre: string[];
-  onClick: () => void;
+  movie: Movies;
+  isLiked: boolean;
 }
 
-interface VidProps {
-  id: number;
-  title: string;
-  description: string;
-  duration: string;
-  liked: boolean;
-  genre: string[];
-}
-
-const MovieCard: React.FC<Props> = ({ id, title, duration }) => {
-  const [liked, setLiked] = useState(false);
-  // const addLike = (id:number)=>{
-  //   const likes = JSON.parse(localStorage.getItem("likes"))
-  //   localStorage.setItem("likes",JSON.)
-  // }
-
-  useEffect(() => {
-    const likedVids = JSON.parse(localStorage.getItem("liked"));
-    // setLiked(likedVids);
-    console.log(likedVids)
-  }, [id]);
+const MovieCard: React.FC<Props> = ({ movie, isLiked }) => {
+  const { addLiked, removeLiked } = useContext(
+    LikedMovieContext
+  ) as LikedMovieContextType;
 
   const toggleLiked = () => {
-    const likedVids = JSON.parse(localStorage.getItem("liked") || []);
-    if (liked) {
-      const updatedLikes = likedVids.filter((vidID: number) => vidID !== id);
-      localStorage.setItem("liked", JSON.stringify(updatedLikes));
+    if (!isLiked) {
+      addLiked(movie);
     } else {
-      likedVids.push(id);
-      localStorage.setItem("liked", JSON.stringify(likedVids));
+      removeLiked(movie.id);
     }
-    setLiked(!liked);
   };
 
   return (
-    <Link to={`/movie/${id}`} className="w-full shadow-2xl">
-      <div className="relative flex flex-col gap-3 bg-gray-100">
-        <button
-          onClick={toggleLiked}
-          className={`absolute z-50 top-2 right-2 h-8 w-8 p-1 rounded-full ${
-            liked ? "bg-rose-500" : "bg-gray-300"
-          }`}
-        >
-          {liked ? "❤️" : "♡"}
-        </button>
-
-        <img src={thumbnail} alt={title} className="w-full h-" />
+    <div className=" relative flex flex-col gap-3 bg-gray-100">
+      <button
+        onClick={toggleLiked}
+        className={`absolute flex items-center justify-center z-50 top-2 right-2 h-8 w-8 p-2 rounded-full ${
+          isLiked ? "bg-rose-500" : "bg-gray-300"
+        }`}
+      >
+        {isLiked ? "❤️" : "♡"}
+      </button>
+      <Link to={`/movie/${movie.id}`} className="w-full shadow-2xl">
+        <img src={thumbnail} alt={movie.title} className="w-full h-" />
 
         <div className="px-4 text-left">
           <h2 className="text-lg font-semibold text-gray-900">
-            Title: {title}
+            Title: {movie.title}
           </h2>
-          <p className="text-sm text-gray-600">Duration: {duration}</p>
+          <p className="text-sm text-gray-600">Duration: {movie.duration}</p>
         </div>
 
         <div className="flex wrap items-center text-stone-500">
           {/* {genres.map((genre, index) => (
             <div
               key={index}
-              className="sm:ml-3 text-xs text-gray-400 lg:text-base font-semibold"
+              className="sm:ml-3 flex gap-3 text-xs text-gray-400 lg:text-base font-semibold"
             >
-              {genre.name}
+              {movie.genre.map((g)=>(
+                <small>{g}</small>
+              ))}
             </div>
           ))} */}
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

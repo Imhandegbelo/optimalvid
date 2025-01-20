@@ -5,19 +5,24 @@ import Footer from "./component/Footer";
 import NotFound from "./pages/NotFound";
 import Detail from "./pages/Detail";
 import TopNav from "./component/TopNav";
+import LikedMovieProvider from "./context/LikedVideosContext.tsx";
 
 function App() {
   return (
     <div className="max-w-[1440px] mx-auto">
-      <Router>
-        <TopNav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movie/:id" element={<Detail />} />
-          <Route path="/*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <LikedMovieProvider>
+        <Router>
+          <TopNav />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/movie/:id" element={<Detail />} />
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </Router>
+      </LikedMovieProvider>
     </div>
   );
 }
