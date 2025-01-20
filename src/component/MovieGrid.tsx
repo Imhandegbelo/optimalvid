@@ -13,7 +13,7 @@ const MovieGrid: React.FC<MovieGridProps> = ({ movies, likes }) => {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg: grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}
